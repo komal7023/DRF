@@ -1,14 +1,14 @@
 from rest_framework import serializers
 from .models import Cart, Category, Product, Order
 from django.contrib.auth import get_user_model 
+from rest_framework.fields import CurrentUserDefault
 
 
 class UserSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = get_user_model()
-        fields = "__all__"
-
+        fields = "__all__"    
+ 
 
 class CategorySerializers(serializers.ModelSerializer):
     class Meta:
