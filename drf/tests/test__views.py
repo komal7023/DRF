@@ -1,7 +1,7 @@
 from itertools import product
 from django.urls import reverse
 from rest_framework.test import APITestCase
-from drf.models import Cart, Category, Order, Product
+from drf.models import Cart, Order, Product
 from rest_framework.test import APIClient
 from http import HTTPStatus
 from django.contrib.auth import get_user_model
@@ -43,7 +43,7 @@ class CategoryViewSetTest(APITestCase):
         self.url = reverse('category-list')
         self.client.login(username='admin', password='man')
                
-    def test_product_viewset(self):   
+    def test_category_viewset(self):   
         data ={
             'name': 'mobile',
             'description': 'mobile',
