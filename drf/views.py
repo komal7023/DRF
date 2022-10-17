@@ -2,7 +2,7 @@ from .serializers import UserSerializer
 from .models import Cart, Order, Product, Category
 from .serializers import ProductSerializer, CategorySerializers, OrderSerializer, CartSerializer
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, AllowAny 
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 from rest_framework.views import APIView
@@ -53,10 +53,12 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer  
+    permission_classes = [IsAuthenticated]
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all().order_by('id')
-    serializer_class = OrderSerializer    
+    serializer_class = OrderSerializer 
+    permission_classes = [IsAuthenticated]   
 
 class CartViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)

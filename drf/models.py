@@ -50,5 +50,5 @@ class Cart(models.Model):
     User = get_user_model()
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)    
-    product_qty = models.IntegerField(null=False, blank=False)
+    product_qty = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)      
